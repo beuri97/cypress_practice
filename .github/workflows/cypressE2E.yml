@@ -10,14 +10,13 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
-
+  cypress-run:
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [18.x, 20.x, 22.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        browser: ['chrome', 'firefox']
 
     steps:
     - uses: actions/checkout@v4
@@ -26,11 +25,19 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+
+    - name: install cypress-io action
+      uses: cypress-io/github-action@v6
+      with:
+        browser: ${{matrix.browser}}
+        build: npm run build
+        start: npm start
+
         
-    - name: npm install module
-      run: npm install
-    - name: cypress e2e test run
-      run: npx cypress run
+    # - name: npm install module
+    #   run: npm install
+    # - name: cypress e2e test run
+    #   run: npx cypress run
 
     - name: remove project file in VM
       run: rm -rf ${{ github.workspace }}/*
