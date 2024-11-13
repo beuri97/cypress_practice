@@ -27,7 +27,8 @@ jobs:
         
     - name: npm install module
       run: npm install
-    - name: cypress e2e test run using chrome and firefox
+    - name: cypress e2e test run using chrome
       run: npx cypress run --browser "chrome"
+    - name: cypress e2e test run using firefox
       run: npx cypress run --browser "firefox"
 
