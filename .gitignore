@@ -5,6 +5,7 @@
 cypress/screenshots/
 cypress/videos/
 cypress/downloads/
+cypress/fixtures/credential.json
 # Cypress configuration cache
 cypress/cache/
 
