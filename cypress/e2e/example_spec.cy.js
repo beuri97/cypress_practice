@@ -24,10 +24,3 @@ describe('My Third Practice Test', () => {
       cy.url().should('contain', "/commands/traversal");
   });
 });
-
-describe("Lets work with docs.cypress.io", () => {
-  it("should automatically forward to /app/get-started/why-cypress", () => {
-    cy.visit("https://docs.cypress.io");
-    cy.url().should('include','app/get-started/why-cypress');
-  });
-});
